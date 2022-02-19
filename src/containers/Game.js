@@ -9,7 +9,10 @@ import { useGameContextValues } from "../hooks";
 export const Game = () => {
   const {
     state: { gameInProgress },
+    state,
   } = useGameContextValues();
+
+  console.log(state);
 
   return (
     <Container maxWidth="md">
