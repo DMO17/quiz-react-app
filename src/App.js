@@ -1,6 +1,7 @@
 import "./App.css";
-import { GameForm } from "./components/GameForm";
+
 import { Header } from "./components/Header";
+import { Game } from "./containers/Game";
 import { GameProvider } from "./contexts/GameProvider";
 
 function App() {
@@ -8,7 +9,7 @@ function App() {
     <div>
       <Header />
       <GameProvider>
-        <GameForm />
+        <Game />
       </GameProvider>
     </div>
   );

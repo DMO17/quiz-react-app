@@ -8,7 +8,7 @@ import { useGameContextValues } from "../../hooks";
 
 export const GameForm = () => {
   const {
-    state: { category, gameInProgress },
+    state: { category },
     ACTIONS,
     dispatch,
   } = useGameContextValues();
