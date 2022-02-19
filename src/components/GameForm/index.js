@@ -1,26 +1,42 @@
-import React from "react";
-
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import Button from "@mui/material/Button";
 
+import { useGameContextValues } from "../../hooks";
+
 export const GameForm = () => {
-  const onsubmit = (e) => {
+  const {
+    state: { category, gameInProgress },
+    ACTIONS,
+    dispatch,
+  } = useGameContextValues();
+
+  const onSubmit = (e) => {
     e.preventDefault();
-    console.log(e.target.value);
+    return dispatch({
+      type: ACTIONS.START_GAME,
+      payload: true,
+    });
+  };
+
+  const onChange = (e) => {
+    return dispatch({
+      type: ACTIONS.CHANGE_CATEGORIES,
+      payload: e.target.value,
+    });
   };
 
   return (
-    <form onSubmit={onsubmit}>
+    <form onSubmit={onSubmit}>
       <FormControl sx={{ width: "100%" }} variant="standard">
         <InputLabel id="gameCategoryLabel">Choose a category</InputLabel>
         <Select
           labelId="gameCategoryLabel"
           id="gameCategory"
-          //   onChange={}
-          value="sports"
+          onChange={onChange}
+          value={category}
         >
           <MenuItem value="music" sx={{ width: "100%" }}>
             Music
@@ -35,7 +51,7 @@ export const GameForm = () => {
       </FormControl>
       <FormControl sx={{ width: "100%" }} variant="standard">
         <Button fullWidth variant="contained" type="submit">
-          Start Quiz
+          Contained
         </Button>
       </FormControl>
     </form>
